@@ -11,18 +11,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r61oa")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TOPMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_bottom = 31.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TOPMarginContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="TOPMarginContainer/VBoxContainer"]
+layout_mode = 2
+tab_alignment = 1
+
+[node name="Game" type="VBoxContainer" parent="TOPMarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="LangLabel" type="Label" parent="TOPMarginContainer/VBoxContainer/TabContainer/Game"]
+layout_mode = 2
+text = "LangLabel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LangButton" type="OptionButton" parent="TOPMarginContainer/VBoxContainer/TabContainer/Game"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Japanese"
+popup/item_1/id = 1
+
+[node name="BUTTOMMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BUTTOMMarginContainer"]
 layout_mode = 2
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="BUTTOMMarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "BackToMenu"
+text = "BACK"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_button_pressed"]
+[connection signal="item_selected" from="TOPMarginContainer/VBoxContainer/TabContainer/Game/LangButton" to="." method="_on_lang_button_item_selected"]
+[connection signal="pressed" from="BUTTOMMarginContainer/VBoxContainer/Back" to="." method="_on_button_pressed"]

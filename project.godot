@@ -19,3 +19,8 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=768
+
+[internationalization]
+
+locale/translation_remaps={}
+locale/translations=PackedStringArray("res://Lang/LangTrans.en.translation", "res://Lang/LangTrans.ja.translation")
