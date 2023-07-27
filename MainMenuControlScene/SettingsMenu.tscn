@@ -24,7 +24,7 @@ layout_mode = 2
 
 [node name="TabContainer" type="TabContainer" parent="TOPMarginContainer/VBoxContainer"]
 layout_mode = 2
-tab_alignment = 1
+clip_tabs = false
 
 [node name="Game" type="VBoxContainer" parent="TOPMarginContainer/VBoxContainer/TabContainer"]
 layout_mode = 2
@@ -43,6 +43,31 @@ popup/item_0/id = 0
 popup/item_1/text = "Japanese"
 popup/item_1/id = 1
 
+[node name="Display" type="VBoxContainer" parent="TOPMarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ResLabel" type="Label" parent="TOPMarginContainer/VBoxContainer/TabContainer/Display"]
+layout_mode = 2
+text = "ResButton"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResChangeButton" type="OptionButton" parent="TOPMarginContainer/VBoxContainer/TabContainer/Display"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x768"
+popup/item_2/id = 2
+
+[node name="FullScreenButton" type="CheckButton" parent="TOPMarginContainer/VBoxContainer/TabContainer/Display"]
+layout_mode = 2
+text = "FullScreenButton"
+alignment = 1
+
 [node name="BUTTOMMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -57,5 +82,8 @@ layout_mode = 2
 layout_mode = 2
 text = "BACK"
 
+[connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="item_selected" from="TOPMarginContainer/VBoxContainer/TabContainer/Game/LangButton" to="." method="_on_lang_button_item_selected"]
+[connection signal="item_selected" from="TOPMarginContainer/VBoxContainer/TabContainer/Display/ResChangeButton" to="." method="_on_option_button_item_selected"]
+[connection signal="toggled" from="TOPMarginContainer/VBoxContainer/TabContainer/Display/FullScreenButton" to="." method="_on_full_screen_button_toggled"]
 [connection signal="pressed" from="BUTTOMMarginContainer/VBoxContainer/Back" to="." method="_on_button_pressed"]

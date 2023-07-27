@@ -7,3 +7,8 @@ GAME,Game,ゲーム
 LangLabel,"Change Language",言語を変更する
 LangButtonEN,English,英語
 LangButtonJP,Japanese,日本語
+ResButton,"Change Resolution",解像度を変更する
+FullScreenButton,"FullScreenMode",フルスクリーン
+QuitLabel,"Are you want quit?",ゲームを終了しますか？
+QuitYesButton,"Yes",はい
+QuitNoButton,"No",いいえ

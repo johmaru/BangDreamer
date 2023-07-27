@@ -11,6 +11,33 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_epqf1")
 
+[node name="QuitMenu" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -48.0
+offset_right = 61.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuitLabel" type="Label" parent="QuitMenu"]
+layout_mode = 2
+text = "QuitLabel"
+
+[node name="QuitYesButton" type="Button" parent="QuitMenu"]
+layout_mode = 2
+text = "QuitYesButton"
+
+[node name="QuitNoButton" type="Button" parent="QuitMenu"]
+layout_mode = 2
+text = "QuitNoButton"
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -35,5 +62,7 @@ text = "SETTINGS"
 layout_mode = 2
 text = "EXIT"
 
+[connection signal="pressed" from="QuitMenu/QuitYesButton" to="." method="_on_quit_yes_button_pressed"]
+[connection signal="pressed" from="QuitMenu/QuitNoButton" to="." method="_on_quit_no_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
