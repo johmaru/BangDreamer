@@ -52,17 +52,22 @@ layout_mode = 2
 
 [node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Settings")
 text = "NEWGAME"
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../NewGame")
+focus_neighbor_bottom = NodePath("../Exit")
 text = "SETTINGS"
 
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
 text = "EXIT"
 
 [connection signal="pressed" from="QuitMenu/QuitYesButton" to="." method="_on_quit_yes_button_pressed"]
 [connection signal="pressed" from="QuitMenu/QuitNoButton" to="." method="_on_quit_no_button_pressed"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_focus_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

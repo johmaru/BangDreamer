@@ -3,7 +3,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_process(true)
+	$TOPMarginContainer/VBoxContainer.FOCUS_ALL
+	$BUTTOMMarginContainer/VBoxContainer/Back.grab_focus()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -59,3 +60,11 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_ESCAPE:
 			get_tree().change_scene_to_file("res://MainMenu.tscn")
+
+
+func _on_res_change_button_focus_entered():
+	$TOPMarginContainer/VBoxContainer/TabContainer.current_tab = 1
+
+
+func _on_lang_button_focus_entered():
+	$TOPMarginContainer/VBoxContainer/TabContainer.current_tab = 0

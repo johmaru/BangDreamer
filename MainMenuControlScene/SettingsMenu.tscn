@@ -37,6 +37,8 @@ vertical_alignment = 1
 
 [node name="LangButton" type="OptionButton" parent="TOPMarginContainer/VBoxContainer/TabContainer/Game"]
 layout_mode = 2
+focus_neighbor_right = NodePath("../../Display/ResChangeButton")
+focus_neighbor_bottom = NodePath("../../../../../BUTTOMMarginContainer/VBoxContainer/Back")
 item_count = 2
 popup/item_0/text = "English"
 popup/item_0/id = 0
@@ -55,6 +57,8 @@ vertical_alignment = 1
 
 [node name="ResChangeButton" type="OptionButton" parent="TOPMarginContainer/VBoxContainer/TabContainer/Display"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../Game/LangButton")
+focus_neighbor_bottom = NodePath("../FullScreenButton")
 item_count = 3
 popup/item_0/text = "1920x1080"
 popup/item_0/id = 0
@@ -65,6 +69,8 @@ popup/item_2/id = 2
 
 [node name="FullScreenButton" type="CheckButton" parent="TOPMarginContainer/VBoxContainer/TabContainer/Display"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ResChangeButton")
+focus_neighbor_bottom = NodePath("../../../../../BUTTOMMarginContainer/VBoxContainer/Back")
 text = "FullScreenButton"
 alignment = 1
 
@@ -80,10 +86,13 @@ layout_mode = 2
 
 [node name="Back" type="Button" parent="BUTTOMMarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../TOPMarginContainer/VBoxContainer/TabContainer/Game/LangButton")
 text = "BACK"
 
 [connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="focus_entered" from="TOPMarginContainer/VBoxContainer/TabContainer/Game/LangButton" to="." method="_on_lang_button_focus_entered"]
 [connection signal="item_selected" from="TOPMarginContainer/VBoxContainer/TabContainer/Game/LangButton" to="." method="_on_lang_button_item_selected"]
+[connection signal="focus_entered" from="TOPMarginContainer/VBoxContainer/TabContainer/Display/ResChangeButton" to="." method="_on_res_change_button_focus_entered"]
 [connection signal="item_selected" from="TOPMarginContainer/VBoxContainer/TabContainer/Display/ResChangeButton" to="." method="_on_option_button_item_selected"]
 [connection signal="toggled" from="TOPMarginContainer/VBoxContainer/TabContainer/Display/FullScreenButton" to="." method="_on_full_screen_button_toggled"]
 [connection signal="pressed" from="BUTTOMMarginContainer/VBoxContainer/Back" to="." method="_on_button_pressed"]
