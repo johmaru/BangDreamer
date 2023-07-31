@@ -1,2 +1,1 @@
-# BangDreamer
-BangDream PC clone
+
