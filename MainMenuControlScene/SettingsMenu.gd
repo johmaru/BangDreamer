@@ -1,6 +1,7 @@
 extends Control
-
-
+const 	ConfigPath := "user://Config.json"
+const ConfigFilePath := "user://Config.cfg"
+var config = ConfigFile.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$TOPMarginContainer/VBoxContainer.FOCUS_ALL
@@ -21,24 +22,33 @@ func _on_lang_button_item_selected(index):
 	match index:
 		0:
 			TranslationServer.set_locale("en-US")
+			config.set_value("Setting", "Lang", "en")
+			config.save(ConfigFilePath)
 		1:
-			TranslationServer.set_locale("ja-JP")	
+			TranslationServer.set_locale("ja-JP")
+			config.set_value("Setting", "Lang", "ja")
+			config.save(ConfigFilePath)
 
 
 func _on_option_button_item_selected(index):
-	
 	match index:
 		
 		0:
 			#Exact Resolution is 1920x1020
 			DisplayServer.window_set_size(Vector2i(1920,1020))
 			DisplayServer.window_set_position(Vector2(DisplayServer.screen_get_position()) + DisplayServer.screen_get_size()*0.5 - DisplayServer.window_get_size()*0.5)
+			config.set_value("Setting", "gameScreenSize", "0")
+			config.save(ConfigFilePath)
 		1:
 			DisplayServer.window_set_size(Vector2i(1600,900))
 			DisplayServer.window_set_position(Vector2(DisplayServer.screen_get_position()) + DisplayServer.screen_get_size()*0.5 - DisplayServer.window_get_size()*0.5)
+			config.set_value("Setting", "gameScreenSize", "1")
+			config.save(ConfigFilePath)
 		2: 
 			DisplayServer.window_set_size(Vector2i(1280,768))
 			DisplayServer.window_set_position(Vector2(DisplayServer.screen_get_position()) + DisplayServer.screen_get_size()*0.5 - DisplayServer.window_get_size()*0.5)
+			config.set_value("Setting", "gameScreenSize", "2")
+			config.save(ConfigFilePath)
 
 
 func _on_resized():
